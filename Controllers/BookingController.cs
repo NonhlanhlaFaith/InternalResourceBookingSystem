@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using InternalResourceBookingSystem.Data;
 using InternalResourceBookingSystem.Models;
-using System.Threading.Tasks;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace InternalResourceBookingSystem.Controllers
 {
@@ -21,7 +21,7 @@ namespace InternalResourceBookingSystem.Controllers
         public async Task<IActionResult> Index()
         {
             var bookings = await _context.Bookings
-                .Include(b => b.Resource) // Include related resource info
+                .Include(b => b.Resource)
                 .OrderByDescending(b => b.StartTime)
                 .ToListAsync();
 
@@ -52,9 +52,11 @@ namespace InternalResourceBookingSystem.Controllers
 
             bool conflict = await _context.Bookings.AnyAsync(b =>
                 b.ResourceId == booking.ResourceId &&
-                ((booking.StartTime >= b.StartTime && booking.StartTime < b.EndTime) ||
-                 (booking.EndTime > b.StartTime && booking.EndTime <= b.EndTime) ||
-                 (booking.StartTime <= b.StartTime && booking.EndTime >= b.EndTime))
+                (
+                    (booking.StartTime >= b.StartTime && booking.StartTime < b.EndTime) ||
+                    (booking.EndTime > b.StartTime && booking.EndTime <= b.EndTime) ||
+                    (booking.StartTime <= b.StartTime && booking.EndTime >= b.EndTime)
+                )
             );
 
             if (conflict)
@@ -75,7 +77,6 @@ namespace InternalResourceBookingSystem.Controllers
 
             _context.Add(booking);
             await _context.SaveChangesAsync();
-
             return RedirectToAction(nameof(Index));
         }
 
@@ -112,9 +113,11 @@ namespace InternalResourceBookingSystem.Controllers
             bool conflict = await _context.Bookings.AnyAsync(b =>
                 b.Id != booking.Id &&
                 b.ResourceId == booking.ResourceId &&
-                ((booking.StartTime >= b.StartTime && booking.StartTime < b.EndTime) ||
-                 (booking.EndTime > b.StartTime && booking.EndTime <= b.EndTime) ||
-                 (booking.StartTime <= b.StartTime && booking.EndTime >= b.EndTime))
+                (
+                    (booking.StartTime >= b.StartTime && booking.StartTime < b.EndTime) ||
+                    (booking.EndTime > b.StartTime && booking.EndTime <= b.EndTime) ||
+                    (booking.StartTime <= b.StartTime && booking.EndTime >= b.EndTime)
+                )
             );
 
             if (conflict)
@@ -165,6 +168,7 @@ namespace InternalResourceBookingSystem.Controllers
         }
 
         // POST: Bookings/Delete/5
+        // POST: Bookings/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -178,5 +182,6 @@ namespace InternalResourceBookingSystem.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
     }
 }
