@@ -1,0 +1,33 @@
+# Visual Studio files
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build results
+bin/
+obj/
+
+# Rider files
+.idea/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# DotNet build
+*.dll
+*.exe
+*.log
+
+# Others
+*.DS_Store
+*.env
+
+# Local DB
+*.mdf
+*.ldf

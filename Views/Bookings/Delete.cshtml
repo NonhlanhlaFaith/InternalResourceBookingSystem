@@ -1,0 +1,34 @@
+@model InternalResourceBookingSystem.Models.Booking
+
+@{
+    ViewData["Title"] = "Delete Booking";
+}
+
+<h2>Delete Booking</h2>
+
+<h3>Are you sure you want to delete this booking?</h3>
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-3">Resource</dt>
+        <dd class="col-sm-9">@Model.Resource?.Name</dd>
+
+        <dt class="col-sm-3">Start Time</dt>
+        <dd class="col-sm-9">@Model.StartTime.ToString("g")</dd>
+
+        <dt class="col-sm-3">End Time</dt>
+        <dd class="col-sm-9">@Model.EndTime.ToString("g")</dd>
+
+        <dt class="col-sm-3">Booked By</dt>
+        <dd class="col-sm-9">@Model.BookedBy</dd>
+
+        <dt class="col-sm-3">Purpose</dt>
+        <dd class="col-sm-9">@Model.Purpose</dd>
+    </dl>
+</div>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Index" class="btn btn-secondary ms-2">Cancel</a>
+</form>

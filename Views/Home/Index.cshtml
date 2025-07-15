@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<section class="bg-light text-dark py-5 hero-section">
+    <div class="container text-center py-5 bg-white bg-opacity-75 rounded shadow">
+        <h1 class="display-4 fw-bold">Internal Resource Booking System</h1>
+        <p class="lead">Book meeting rooms, vehicles, or equipment in just a few clicks. No more double bookings, just smooth coordination.</p>
+        <div class="mt-4">
+            <a href="@Url.Action("Index", "Resources")" class="btn btn-primary btn-lg me-3 mb-3 mb-md-0">View Resources</a>
+            <a href="@Url.Action("Index", "Bookings")" class="btn btn-outline-primary btn-lg">View Bookings</a>
+        </div>
+    </div>
+</section>
+
+<section class="container py-5">
+    <div class="row text-center">
+        <div class="col-md-4">
+            <i class="bi bi-calendar-check display-4 text-primary mb-3"></i>
+            <h4>Real-Time Booking</h4>
+            <p>Reserve resources instantly without conflict or double-booking.</p>
+        </div>
+        <div class="col-md-4">
+            <i class="bi bi-diagram-3 display-4 text-success mb-3"></i>
+            <h4>Centralized Management</h4>
+            <p>Manage all rooms, cars, and equipment from one place.</p>
+        </div>
+        <div class="col-md-4">
+            <i class="bi bi-people-fill display-4 text-warning mb-3"></i>
+            <h4>User-Friendly Interface</h4>
+            <p>Simple and intuitive UI designed for all employees.</p>
+        </div>
+    </div>
+</section>
+
+<section class="bg-primary text-white py-5">
+    <div class="container text-center">
+        <h2 class="fw-bold">Start Booking Smarter Today</h2>
+        <p class="lead">View available resources or add a new booking now!</p>
+        <a href="@Url.Action("Create", "Bookings")" class="btn btn-light btn-lg mt-3">Add a Booking</a>
+    </div>
+</section>

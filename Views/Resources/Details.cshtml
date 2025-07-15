@@ -1,0 +1,28 @@
+@model InternalResourceBookingSystem.Models.Resource
+
+@{
+    ViewData["Title"] = "Resource Details";
+}
+
+<h2>Resource Details</h2>
+
+<div>
+    <h4>@Model.Name</h4>
+    <dl class="row">
+        <dt class="col-sm-2">Description</dt>
+        <dd class="col-sm-10">@Model.Description</dd>
+
+        <dt class="col-sm-2">Location</dt>
+        <dd class="col-sm-10">@Model.Location</dd>
+
+        <dt class="col-sm-2">Capacity</dt>
+        <dd class="col-sm-10">@Model.Capacity</dd>
+
+        <dt class="col-sm-2">Is Available</dt>
+        <dd class="col-sm-10">@Model.IsAvailable</dd>
+    </dl>
+</div>
+<p>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</p>

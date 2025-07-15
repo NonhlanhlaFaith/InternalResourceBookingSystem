@@ -1,0 +1,49 @@
+@model IEnumerable<InternalResourceBookingSystem.Models.Booking>
+
+    @{
+    ViewData["Title"] = "All Bookings";
+    }
+
+    <h2>All Bookings</h2>
+
+    <p>
+        <a asp-action="Create" class="btn btn-primary">Add New Booking</a>
+    </p>
+
+    @if (!Model.Any())
+{
+    <div class="alert alert-info">
+        No bookings found.
+    </div>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Resource</th>
+                <th>Start</th>
+                <th>End</th>
+                <th>Booked By</th>
+                <th>Purpose</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var b in Model)
+            {
+            <tr>
+                <td>@b.Resource?.Name</td>
+                <td>@b.StartTime.ToString("g")</td>
+                <td>@b.EndTime.ToString("g")</td>
+                <td>@b.BookedBy</td>
+                <td>@b.Purpose</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@b.Id" class="btn btn-sm btn-warning">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@b.Id" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}
